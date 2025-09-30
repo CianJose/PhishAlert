@@ -1,0 +1,80 @@
+{% extends 'admin_pages/base.html' %}
+
+{% block content %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">Phishing Detection Dashboard</h2>
+
+    <!-- Summary Cards -->
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="card text-white bg-danger">
+                <div class="card-body">
+                    <h5 class="card-title">Total Suspicious Websites</h5>
+                    <p class="card-text display-4">{{ suspicious_count }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card text-white bg-warning">
+                <div class="card-body">
+                    <h5 class="card-title">Total SQL-injected Websites</h5>
+                    <p class="card-text display-4">{{ sql_count }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Suspicious URLs -->
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Recent Suspicious URLs</h4>
+            <table class="table table-bordered table-hover">
+                <thead class="table-danger">
+                    <tr>
+                        <th>#</th>
+                        <th>URL</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for site in recent_suspicious %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ site.url }}</td>
+                        <td>{{ site.created_at|date:"Y-m-d H:i" }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr><td colspan="3" class="text-center">No suspicious URLs found.</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Recent SQL-injected URLs -->
+        <div class="col-md-6">
+            <h4>Recent SQL-injected URLs</h4>
+            <table class="table table-bordered table-hover">
+                <thead class="table-warning">
+                    <tr>
+                        <th>#</th>
+                        <th>URL</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for site in recent_sql %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ site.url }}</td>
+                        <td>{{ site.created_at|date:"Y-m-d H:i" }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr><td colspan="3" class="text-center">No SQL-injected URLs found.</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

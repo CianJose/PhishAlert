@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Index - PHISH PATROL Bootstrap Template</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="" rel="icon">
+  <link href="" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="path-to-your-stylesheet/styles.css">
+
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/aos/aos.css" rel="stylesheet' %}">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+
+      <a href="{% url 'index' %}" class=" align-items-center me-auto">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo1.png" alt="" style="height: 100px; width:200px;"> -->
+        <p style="font-family: 'Algerian', sans-serif;font-size:20px;color:blue;">PHISH PATROL AI</p>
+
+      </a>
+
+    
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="#hero" class="active">Home</a></li>
+          <li><a href="#features">About</a></li>
+          <li><a href="#services">Features</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+      
+      <!-- Mobile-Only Screen View -->
+      <div class="mobile-screen-view">
+      </div>
+      
+      <!-- Call-to-Action Button -->
+      {% comment %} <a class="cta-btn" href="{% url 'check_phishing' %}">Get Started</a> {% endcomment %}
+      {% if user.is_authenticated %}
+          <a class="cta-btn" href="{% url 'check_phishing' %}">Get Started</a>
+      {% else %}
+          <a class="cta-btn" href="{% url 'register' %}">Get Started</a>
+      {% endif %}
+      
+  
+    </div>
+  </header>
+
+  <main class="main">
+
+    <section id="hero" class="hero section dark-background">
+
+      <video autoplay muted loop class="hero-video">
+        <source src="{% static 'assets/cyberpunk.mp4' %}" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    
+      <div class="container d-flex flex-column align-items-center">
+        <h2 data-aos="fade-up" data-aos-delay="100">PHISH PATROL AI</h2>
+        <p data-aos="fade-up" data-aos-delay="200" style="font-size: 15px;">
+          "Our AI-Powered Phishing Detection System Safeguards Users by Identifying and Blocking Malicious Websites, Ensuring a Secure Browsing Experience with Real-Time Threat Analysis."
+        </p>
+        <div class="d-flex mt-4" data-aos="fade-up" data-aos-delay="300">
+          <a href="{% url 'check_phishing' %}" class="btn-get-started">Get Started</a>
+          <a href="https://youtu.be/VEQd-jmVs44?si=HZCsQkImJ-m2ElBA" class="glightbox btn-watch-video d-flex align-items-center">
+            <i class="bi bi-play-circle"></i><span>Watch Video</span>
+          </a>
+        </div>
+      </div>
+    
+    </section>
+    <style>
+      
+      .about-section {
+          position: relative;
+          width: 100%;
+          height: 80vh;
+          background: url('{% static "/images/img2.jpg" %}'); no-repeat center center/cover;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          color: white;
+      }
+
+      .about-section::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.6); /* Dark overlay */
+      }
+
+      .about-content {
+          position: relative;
+          max-width: 700px;
+          padding: 20px;
+      }
+
+      .about-content h2 {
+          font-size: 2.5rem;
+          margin-bottom: 15px;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+      }
+
+      .about-content p {
+          font-size: 1.1rem;
+          line-height: 1.8;
+      }
+
+      @media (max-width: 768px) {
+          .about-content h2 {
+              font-size: 2rem;
+          }
+
+          .about-content p {
+              font-size: 1rem;
+          }
+      }
+  </style>
+
+
+  
+
+    
+    <style>
+      .hero {
+        position: relative;
+        overflow: hidden;
+      }
+    
+      .hero-video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        
+      }
+    </style>
+    
+
+   
+    <!-- Services Section -->
+    <section id="features" class="features section">
+      <div class="container">
+        <div class="tab-content" data-aos="fade-up" data-aos-delay="200">
+
+          <div class="tab-pane fade active show">
+            <div class="row">
+              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
+                <h3>About Us</h3>
+                <p class="fst-italic">
+                  Phishing is a prevalent cybersecurity threat where malicious websites mimic legitimate ones to deceive users and steal sensitive information
+                </p>
+                <p>
+                  This project aims to develop an AI-based phishing detection system specifically tailored for websites
+                </p>
+                <ul>
+                  <li><i class="bi bi-check2-all"></i>
+                    <spab>Real-time Threat Detection: AI-based phishing detection systems analyze emails, links, and user behavior</spab>
+                  </li>
+                  <li><i class="bi bi-check2-all"></i> <span>Adaptive Learning and Response: These systems continuously learn from new phishing tactics</span>.</li>
+                  <li><i class="bi bi-check2-all"></i> <span>AI-based phishing detection provides a dynamic and effective solution for web security</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span>Enhances protection against evolving phishing tactics</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span>Provides a dynamic and effective solution for web security</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span>Continuously improves through learning</span></li>
+                </ul>
+                
+              </div>
+              {% comment %} <div class="col-lg-6 order-1 order-lg-2 text-center">
+                <img src="{% static 'assets/img/working-1.jpg' %}" alt="" class="img-fluid">
+              </div> {% endcomment %}
+              <div class="col-lg-6 order-1 order-lg-2 text-center">
+                <video class="img-fluid" autoplay muted loop>
+                    <source src="{% static 'assets/Videos/Cyber_security.mp4' %}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            </div>
+          </div><!-- End Tab Content Item -->
+        </div>
+      </div>
+    </section>
+    <style>
+      .service-item {
+        display: flex;
+        flex-direction: column;
+        height: 100%; /* Ensures all cards take full height */
+        background: #fff; /* Optional: Keeps a uniform background */
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .service-item .img {
+        width: 100%;
+        height: 300px; /* Adjust image height */
+        overflow: hidden;
+    }
+    
+    .service-item .img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Ensures image covers the div */
+    }
+    
+    .service-item .details {
+        flex-grow: 1; /* Pushes content to expand */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; /* Ensures even spacing */
+        padding: 20px;
+        text-align: center;
+    }
+    
+    </style>
+    <section id="services" class="services section">
+
+      
+      <div class="container section-title" data-aos="fade-up">
+        
+        <p>Key Features<br></p>
+      </div>
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-5">
+
+          <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+            <div class="service-item">
+              <div class="img">
+                <img src="{% static 'assets/img/services-1.jpg' %}" class="img-fluid" alt="">
+              </div>
+              <div class="details position-relative">
+                <div class="icon">
+                  <i class="bi bi-activity"></i>
+                </div>
+                <a href="service-details.html" class="stretched-link">
+                  <h3>Phishing Detection </h3>
+                </a>
+                <p>Uses machine learning (ML) models to detect phishing URLs based on domain age, structure, and content.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+            <div class="service-item">
+              <div class="img">
+                <img src="{% static 'assets/img/services-2.jpg' %}" class="img-fluid" alt="">
+              </div>
+              <div class="details position-relative">
+                <div class="icon">
+                  <i class="bi bi-broadcast"></i>
+                </div>
+                <a href="service-details.html" class="stretched-link">
+                  <h3>
+                    SQL Injection Detection</h3>
+                </a>
+                <p>Analyzes URL length, special characters, and keyword patterns to identify suspicious websites.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="400">
+            <div class="service-item">
+              <div class="img">
+                <img src="{% static 'assets/img/services-3.jpg' %}" class="img-fluid" alt="">
+              </div>
+              <div class="details position-relative">
+                <div class="icon">
+                  <i class="bi bi-easel"></i>
+                </div>
+                <a href="service-details.html" class="stretched-link">
+                  <h3>Machine Learning Integration</h3>
+                </a>
+                <p>Uses supervised learning with datasets containing phishing and non-phishing URLs, as well as SQL injection attack patterns.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    
+    
+    
+    <!-- Features Section -->
+    <section id="features" class="features section">
+
+      <div class="container">
+
+        <ul class="nav nav-tabs row  d-flex" data-aos="fade-up" data-aos-delay="100">
+          <li class="nav-item col-3">
+            <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#features-tab-1">
+              <i class="bi bi-binoculars"></i>
+              <h4 class="d-none d-lg-block">Phishing Detection</h4>
+            </a>
+          </li>
+          <li class="nav-item col-3">
+            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-2">
+              <i class="bi bi-box-seam"></i>
+              <h4 class="d-none d-lg-block">SQL Injection Detection</h4>
+            </a>
+          </li>
+          <li class="nav-item col-3">
+            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-3">
+              <i class="bi bi-brightness-high"></i>
+              <h4 class="d-none d-lg-block">Machine Learning and User Interface</h4>
+            </a>
+          </li>
+          <li class="nav-item col-3">
+            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-4">
+              <i class="bi bi-command"></i>
+              <h4 class="d-none d-lg-block">Nostrum qui dile node</h4>
+            </a>
+          </li>
+        </ul><!-- End Tab Nav -->
+
+        <div class="tab-content" data-aos="fade-up" data-aos-delay="200">
+
+          <div class="tab-pane fade active show" id="features-tab-1">
+            <div class="row">
+              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
+                <h3>AI-Powered URL Analysis</h3>
+                <p class="fst-italic">
+                  Uses machine learning (ML) models to detect phishing URLs based on domain age, structure, and content.
+                </p>
+                <ul>
+                  <li><i class="bi bi-check2-all"></i>
+                    <spab>Analyzes URL length, special characters, and keyword patterns to identify suspicious websites.</spab>
+                  </li>
+                  <li><i class="bi bi-check2-all"></i> <span>Checks website elements like forms, SSL certificates, and scripts to detect phishing attempts.</span>.</li>
+                  <li><i class="bi bi-check2-all"></i> <span>Extracts links from emails and scans them for phishing characteristics.</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span>Can be integrated into a browser to warn users before visiting phishing sites.</span></li>
+                  
+                </ul>
+                
+              </div>
+              <div class="col-lg-6 order-1 order-lg-2 text-center">
+                <img src="{% static 'assets/img/working-1.jpg' %}" alt="" class="img-fluid">
+              </div>
+            </div>
+          </div><!-- End Tab Content Item -->
+
+          <div class="tab-pane fade" id="features-tab-2">
+            <div class="row">
+              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
+                <h3>Automated Input Validation</h3>
+                <p>
+                  Automated Input Validation: Scans input fields to detect and prevent SQL injection attempts.
+                </p>
+                
+                <ul>
+                  <li><i class="bi bi-check2-all"></i> <span>Pattern Matching for Injection Attacks: Identifies SQL-related keywords (SELECT, DROP, UNION, etc.) in input fields.</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span>Behavior-Based Anomaly Detection: Uses AI to detect unusual database queries that deviate from normal patterns.</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span>WAF (Web Application Firewall) Rules Integration: Adds extra security against SQL injection attacks.</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span>User Query Logging & Analysis: Keeps track of suspicious user inputs and logs potential attacks for analysis.</span></li>
+                </ul>
+              </div>
+              <div class="col-lg-6 order-1 order-lg-2 text-center">
+                <img src="{% static 'assets/img/working-2.jpg' %}" alt="" class="img-fluid">
+              </div>
+            </div>
+          </div><!-- End Tab Content Item -->
+
+          <div class="tab-pane fade" id="features-tab-3">
+            <div class="row">
+              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
+                <h3>AI Model Training</h3>
+                <p>
+                  Uses supervised learning with datasets containing phishing and non-phishing URLs, as well as SQL injection attack patterns.
+                </p>
+                <ul>
+                  <li><i class="bi bi-check2-all"></i> <span>Simple Web Interface/Dashboard: Allows users to input URLs and form data for scanning.</span></li>
+                  
+                </ul>
+                
+              </div>
+              <div class="col-lg-6 order-1 order-lg-2 text-center">
+                <img src="{% static 'assets/img/working-3.jpg' %}" alt="" class="img-fluid">
+              </div>
+            </div>
+          </div><!-- End Tab Content Item -->
+
+          <div class="tab-pane fade" id="features-tab-4">
+            <div class="row">
+              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
+                <h3>Omnis fugiat ea explicabo sunt dolorum asperiores sequi inventore rerum</h3>
+                <p>
+                  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                  culpa qui officia deserunt mollit anim id est laborum
+                </p>
+                <p class="fst-italic">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                  magna aliqua.
+                </p>
+                <ul>
+                  <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span>Duis aute irure dolor in reprehenderit in voluptate velit.</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</span></li>
+                </ul>
+              </div>
+              <div class="col-lg-6 order-1 order-lg-2 text-center">
+                <img src="{% static 'assets/img/working-4.jpg' %}" alt="" class="img-fluid">
+              </div>
+            </div>
+          </div><!-- End Tab Content Item -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Features Section -->
+
+    <!-- Services 2 Section -->
+    <section id="services-2" class="services-2 section light-background">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>PHISH PATROL</h2>
+        <p>SERVICES</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item d-flex position-relative h-100">
+              <i class="bi bi-briefcase icon flex-shrink-0"></i>
+              <div>
+                <h4 class="title"><a href="#" class="stretched-link">URL-Based Features</a></h4>
+                <p class="description">Checks if the URL contains an IP address instead of a domain name (common in phishing sites).</p>
+             
+                
+
+              </div>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item d-flex position-relative h-100">
+              <i class="bi bi-card-checklist icon flex-shrink-0"></i>
+              <div>
+                <h4 class="title"><a href="#" class="stretched-link">Security & HTTPS-Based Features</a></h4>
+                <p class="description">Hppts(): Checks if the site uses HTTPS (phishing sites often lack SSL).</p>
+              </div>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-item d-flex position-relative h-100">
+              <i class="bi bi-bar-chart icon flex-shrink-0"></i>
+              <div>
+                <h4 class="title"><a href="#" class="stretched-link">Content-Based Features</a></h4>
+                <p class="description">NonStdPort(): Detects if the website runs on a non-standard port (e.g., not 80/443).</p>
+              </div>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="service-item d-flex position-relative h-100">
+              <i class="bi bi-binoculars icon flex-shrink-0"></i>
+              <div>
+                <h4 class="title"><a href="#" class="stretched-link">Content-Based Features</a></h4>
+                <p class="description">RequestURL(): Determines if elements (images, scripts) are loaded from external sources.</p>
+              </div>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-md-6" data-aos="fade-up" data-aos-delay="500">
+            <div class="service-item d-flex position-relative h-100">
+              <i class="bi bi-brightness-high icon flex-shrink-0"></i>
+              <div>
+                <h4 class="title"><a href="#" class="stretched-link">Reputation & Traffic-Based Features</a></h4>
+                <p class="description"> DisableRightClick(): Identifies attempts to block right-clicks (phishers try to prevent investigation).
+
+                  /p>
+              </div>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-md-6" data-aos="fade-up" data-aos-delay="600">
+            <div class="service-item d-flex position-relative h-100">
+              <i class="bi bi-calendar4-week icon flex-shrink-0"></i>
+              <div>
+                <h4 class="title"><a href="#" class="stretched-link">User Interaction-Based Features</a></h4>
+                <p class="description">DisableRightClick(): Identifies attempts to block right-clicks (phishers try to prevent investigation).</p>
+              </div>
+            </div>
+          </div><!-- End Service Item -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Services 2 Section -->
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials section dark-background">
+
+      <img src="{% static 'assets/img/testimo.jpg' %}" class="testimonials-bg" alt="">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="swiper init-swiper">
+          <script type="application/json" class="swiper-config">
+            {
+              "loop": true,
+              "speed": 600,
+              "autoplay": {
+                "delay": 5000
+              },
+              "slidesPerView": "auto",
+              "pagination": {
+                "el": ".swiper-pagination",
+                "type": "bullets",
+                "clickable": true
+              }
+            }
+          </script>
+          <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <img src="{% static 'assets/img/testimonials/kevin.jpg' %}" class="testimonial-img" alt="">
+                <h3>Kevin Mitnic</h3>
+                <h4>Computer Security Consultant &amp; King Of Cyber Security</h4>
+                <div class="stars">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </div>
+                <p>
+                  <i class="bi bi-quote quote-icon-left"></i>
+                  <span>"Amateurs hack systems, professionals hack people" and "In security, you are only as secure as your weakest link"</span>
+                  <i class="bi bi-quote quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <img src="{% static 'assets/img/testimonials/Jodirell.jpg' %}" class="testimonial-img" alt="">
+                <h3>Jodi Rell</h3>
+                <h4>Former Governor of connecticut</h4>
+                <div class="stars">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </div>
+                <p>
+                  <i class="bi bi-quote quote-icon-left"></i>
+                  <span>"At the end of the day,the goals are simple:safety and security"</span>
+                  <i class="bi bi-quote quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <img src="{% static 'assets/img/testimonials/bruce.jpg' %}" class="testimonial-img" alt="">
+                <h3>Bruce Schneier</h3>
+                <h4>American Cryptographer</h4>
+                <div class="stars">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </div>
+                <p>
+                  <i class="bi bi-quote quote-icon-left"></i>
+                  <span>"Amateurs hack systems;professionals hack people."</span>
+                  <i class="bi bi-quote quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <img src="{% static 'assets/img/testimonials/markz.jpg' %}" class="testimonial-img" alt="">
+                <h3>Mark Zuckerberg</h3>
+                <h4>CEO of Meta</h4>
+                <div class="stars">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </div>
+                <p>
+                  <i class="bi bi-quote quote-icon-left"></i>
+                  <span>"The hacker way is an approach to building that involves continuous improvement and iteration.Hackers believe that something can always be better,and that nothing is ever complete"</span>
+                  <i class="bi bi-quote quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <img src="{% static 'assets/img/testimonials/Ryan.jpg' %}" class="testimonial-img" alt="">
+                <h3>Ryan Holiday</h3>
+                <h4>American Marketer & Author</h4>
+                <div class="stars">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </div>
+                <p>
+                  <i class="bi bi-quote quote-icon-left"></i>
+                  <span>"Growth hackers are typically computer engineers that build great marketing ideas into the product during the development process"</span>
+                  <i class="bi bi-quote quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+
+    </section><!-- /Testimonials Section -->
+
+    <section id="faq" class="faq">
+      <div class="container">
+          <div class="row justify-content-center">
+              <div class="col-xl-8 col-lg-8 text-center">
+                  <div class="section-title">
+                      <h4>FAQ's</h4>
+                      <h2>Frequently Asking <span>Question’s</span></h2>
+                  </div>
+              </div>
+          </div>
+  
+          <div class="row">
+              <div class="col-xl-12 col-lg-12">
+                  <div class="accordion" id="accordionExample">
+                      <div class="row">
+                          <div class="col-xl-6 col-lg-6">
+                              <div class="card">
+                                  <div class="card-header">
+                                      <h5 class="mb-0">
+                                          <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                              data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                              What is phishing?
+                                          </button>
+                                      </h5>
+                                  </div>
+  
+                                  <div id="collapseOne" class="collapse" data-parent="#accordionExample">
+                                      <div class="card-body">
+                                        Phishing is a fraudulent attempt to obtain sensitive information by disguising as a trustworthy entity.
+                                      </div>
+                                  </div>
+                              </div>
+  
+                              <div class="card">
+                                  <div class="card-header">
+                                      <h5 class="mb-0">
+                                          <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                              data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                              How does this tool detect phishing websites?
+                                          </button>
+                                      </h5>
+                                  </div>
+                                  <div id="collapseTwo" class="collapse" data-parent="#accordionExample">
+                                      <div class="card-body">
+                                        The tool checks URL patterns, keywords, and known suspicious sites from our database.
+                                      </div>
+                                  </div>
+                              </div>
+  
+                              <div class="card">
+                                  <div class="card-header">
+                                      <h5 class="mb-0">
+                                          <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                              data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                              What should I do if I find a suspicious URL?
+                                          </button>
+                                      </h5>
+                                  </div>
+                                  <div id="collapseThree" class="collapse" data-parent="#accordionExample">
+                                      <div class="card-body">
+                                        You can submit it to our scanner tool and report it to concerned authorities if confirmed malicious.
+                                      </div>
+                                  </div>
+                              </div>
+  
+                              <div class="card">
+                                  <div class="card-header">
+                                      <h5 class="mb-0">
+                                          <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                              data-target="#collapse4" aria-expanded="false" aria-controls="collapseThree">
+                                              What is a phishing attack?
+                                          </button>
+                                      </h5>
+                                  </div>
+                                  <div id="collapse4" class="collapse" data-parent="#accordionExample">
+                                      <div class="card-body">
+                                        A phishing attack is a cybercrime where attackers impersonate a legitimate organization via email, message, or website to steal sensitive data like login credentials, credit card numbers, or personal information.
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+  
+                          <div class="col-xl-6 col-lg-6">
+                              <div class="card">
+                                  <div class="card-header">
+                                      <h5 class="mb-0">
+                                          <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                              data-target="#collapse5" aria-expanded="false" aria-controls="collapseOne">
+                                              How can I identify a phishing website?
+                                          </button>
+                                      </h5>
+                                  </div>
+  
+                                  <div id="collapse5" class="collapse" data-parent="#accordionExample">
+                                      <div class="card-body">
+                                        Look for suspicious URL patterns, spelling mistakes, lack of HTTPS, fake login forms, urgent messages, or anything that seems off from a normal website.
+                                      </div>
+                                  </div>
+                              </div>
+  
+                              <div class="card">
+                                  <div class="card-header">
+                                      <h5 class="mb-0">
+                                          <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                              data-target="#collapse6" aria-expanded="false" aria-controls="collapseTwo">
+                                              What is SQL Injection and how does it work?
+                                          </button>
+                                      </h5>
+                                  </div>
+                                  <div id="collapse6" class="collapse" data-parent="#accordionExample">
+                                      <div class="card-body">
+                                        SQL Injection is a code injection technique that allows attackers to interfere with the queries an application makes to its database. It can be used to access or manipulate data without authorization.
+                                      </div>
+                                  </div>
+                              </div>
+  
+                              <div class="card">
+                                  <div class="card-header">
+                                      <h5 class="mb-0">
+                                          <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                              data-target="#collapse7" aria-expanded="false" aria-controls="collapseThree">
+                                              What does this tool detect?
+                                          </button>
+                                      </h5>
+                                  </div>
+                                  <div id="collapse7" class="collapse" data-parent="#accordionExample">
+                                      <div class="card-body">
+                                        This tool detects suspicious URLs and websites that may contain phishing or SQL injection vulnerabilities. It helps users avoid dangerous sites by flagging known or suspected malicious links.
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="card">
+                                  <div class="card-header">
+                                      <h5 class="mb-0">
+                                          <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                              data-target="#collapse8" aria-expanded="false" aria-controls="collapseThree">
+                                              Can I trust the results of this tool?
+                                          </button>
+                                      </h5>
+                                  </div>
+                                  <div id="collapse8" class="collapse" data-parent="#accordionExample">
+                                      <div class="card-body">
+                                          
+                                        While the tool uses several techniques to detect suspicious behavior, it's not a guarantee. It is recommended to use it along with personal caution and other cybersecurity tools.
+                                      </div>
+                                  </div>
+                              </div>
+  
+                          </div>
+  
+                      </div>
+  
+                  </div>
+  
+              </div>
+          </div>
+      </div>
+  </section>
+  <style>
+    h1, h2, h3, h4, h5, h6 {
+      color: #ff008b;
+  }
+  section {
+      padding: 60px;
+  }
+  a, a:hover, a:focus, a:active {
+      text-decoration: none;
+      outline: none;
+  }
+  ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+  }
+  .faq {
+      padding: 120px 0 90px;
+      background: #f7fbff;
+      min-height: 100vh;
+  }
+  
+  .faq .section-title {
+      margin-bottom: 54px;
+  }
+  
+  .faq .section-title h2 {
+      margin-bottom: 22px;
+  }
+  
+  .faq .accordion .card {
+      border: none;
+      margin-bottom: 30px;
+  }
+  
+  .faq .accordion .card:not(:first-of-type) .card-header:first-child {
+      border-radius: 10px;
+  }
+  
+  .faq .accordion .card .card-header {
+      border: none;
+      border-radius: 10px;
+      padding: 0;
+  }
+  
+  .faq .accordion .card .card-header h5 {
+      padding: 0;
+  }
+  
+  .faq .accordion .card .card-header h5 button {
+      color: #1e3056;
+      font-size: 18px;
+      font-weight: 500;
+      text-decoration: none;
+      padding: 0 30px 0 70px;
+      height: 80px;
+      display: block;
+      width: 100%;
+      color: rgba(30, 48, 86, 0.8);
+      text-align: left;
+      background: #fff;
+      -webkit-box-shadow: 0px -50px 140px 0px rgba(69, 81, 100, 0.1);
+      box-shadow: 0px -50px 140px 0px rgba(69, 81, 100, 0.1);
+      border-radius: 10px 10px 0 0;
+      position: relative;
+  }
+  
+  .faq .accordion .card .card-header h5 button:after {
+      position: absolute;
+      left: 30px;
+      top: 50%;
+      margin-top: -10px;
+      width: 20px;
+      height: 20px;
+      background-color: transparent;
+      color: #ff5f74;
+      text-align: center;
+      border: 1px solid #ff5f74;
+      border-radius: 50%;
+      line-height: 100%;
+      content: '\f067';
+      font-size: 10px;
+      line-height: 18px;
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+  }
+  
+  .faq .accordion .card .card-header h5 button.collapsed {
+      background: #fff;
+      border-radius: 10px;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      border: 1px solid rgba(97, 125, 255, 0.2);
+  }
+  
+  .faq .accordion .card .card-header h5 button[aria-expanded="true"]:after {
+      content: '\f068';
+      color: #fff;
+      background-image: -webkit-linear-gradient(-180deg, #5e7eff 0%, #ff5f74 30%, #a85fff 100%);
+  }
+  
+  .faq .accordion .card .card-body {
+      -webkit-box-shadow: 0px 15px 140px 0px rgba(69, 81, 100, 0.1);
+      box-shadow: 0px 15px 140px 0px rgba(69, 81, 100, 0.1);
+      border-radius: 0 0 10px 10px;
+      padding-top: 0;
+      margin-top: -6px;
+      padding-left: 72px;
+      padding-right: 70px;
+      padding-bottom: 23px;
+      color: rgba(30, 48, 86, 0.8);
+      line-height: 30px;
+  }
+  </style>
+  
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Contact</h2>
+        <p style="font-size: 25px;">Secure your bussiness with AI-based phishing detection-let's talk!</p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4">
+          <div class="col-lg-6 ">
+            <div class="row gy-4">
+
+              <div class="col-lg-12">
+                <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="200">
+                  <i class="bi bi-geo-alt"></i>
+                  <h3>Address</h3>
+                  <p>Tinos Software & Security Solutions LLP, Palarivattom, Kerala 682025</p>
+                </div>
+              </div><!-- End Info Item -->
+
+              <div class="col-md-6">
+                <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="300">
+                  <i class="bi bi-telephone"></i>
+                  <h3>Call Us</h3>
+                  <p>+91 7907053183</p>
+                </div>
+              </div><!-- End Info Item -->
+
+              <div class="col-md-6">
+                <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="400">
+                  <i class="bi bi-envelope"></i>
+                  <h3>Email Us</h3>
+                  <p>akkuzz7442@gmail.com</p>
+                </div>
+              </div><!-- End Info Item -->
+
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+
+            <form method="POST" action="{% url 'index' %}" class="php-email-form" data-aos="fade-up" data-aos-delay="500">
+              {% csrf_token %}
+              <div class="row gy-4">
+                  <div class="col-md-6">
+                      <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
+                  </div>
+          
+                  <div class="col-md-6">
+                      <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
+                  </div>
+          
+                  <div class="col-md-12">
+                      <textarea class="form-control" name="message" rows="4" placeholder="Message" required=""></textarea>
+                  </div>
+          
+                  <div class="col-md-12 text-center">
+                      <div class="loading">Loading</div>
+                      <div class="error-message">
+                          {% if messages %}
+                              {% for message in messages %}
+                                  <p>{{ message }}</p>
+                              {% endfor %}
+                          {% endif %}
+                      </div>
+                      <div class="sent-message">Your message has been sent. Thank you!</div>
+                      <button type="submit">Send Message</button>
+                  </div>
+                  
+              </div>
+          </form>
+          </div><!-- End Contact Form -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Contact Section -->
+
+  </main>
+
+  <footer id="footer" class="footer dark-background">
+
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6 footer-about">
+          <a href="index.html" class="logo d-flex align-items-center">
+            <span class="sitename">PHISH PATROL AI</span>
+          </a>
+          <div class="footer-contact pt-3">
+            <p>Tinos Software & Security Solutions LLP</p>
+            <p>Palarivattom, Kerala 682025</p>
+            <p class="mt-3"><strong>Phone:</strong> <span>+91 7907 053 183</span></p>
+            <p><strong>Email:</strong> <span>akkuzz7442@gmail.com</span></p>
+          </div>
+          <div class="social-links d-flex mt-4">
+            <a href="https://www.threads.net/@ath_mikk_77_" target="_blank" rel="noopener noreferrer">
+              <i class="bi bi-threads"></i> <!-- Replace with the correct Threads icon or SVG -->
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=100072796278497&mibextid=rS40aB7S9Ucbxw6v"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.instagram.com/ath_mikk_77_?igsh=ZTcxdjVhem5xZThh" target="_blank" rel="noopener noreferrer">
+              <i class="bi bi-instagram"></i>
+            </a>
+            <a href="https://in.linkedin.com/in/athmik-vinod-57268a262"><i class="bi bi-linkedin"></i></a>
+          </div>
+          
+          
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="#">About us</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="#">Features</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="#">Faq</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="#">Contact</a></li>
+          </ul>
+        </div>
+
+        
+
+        <div class="col-lg-4 col-md-12 footer-newsletter">
+          <h4>Phish Patrol</h4>
+          <p>"Smart Security, Smarter AI – No More Phishing Scams!"</p>
+          <div class="pic"><img style="height: 200px;width: 400;" src="{% static 'assets/img/footer.jpg' %}" method="post" class="php-email-form">
+            
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you've purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
+        Designed by <a href="https://www.instagram.com/ath_mikk_77_?igsh=ZTcxdjVhem5xZThh">Athmik Vinod</a> 
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+
+  <!-- Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+
+</body>
+
+</html>

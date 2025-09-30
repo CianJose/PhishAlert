@@ -1,0 +1,179 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Phishing Detector</title>
+    <style>
+        body {
+            font-family: 'Cascadia Code', monospace; /* Use the Cascadia Code font */
+           
+            background-image: url('{% static "assets/img/hacky.jpg" %}'); /* Set your background image path */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+           
+        }
+
+        h1 {
+            background-color: transparent;
+            color:#D4F6F5;
+            padding: 90px;
+            margin-top: 0;
+        }
+
+        
+        /* .form-container {
+            align: center; /* Center-align the form *
+        } */
+
+        form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 70px;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: transparent;
+            /* border: 2px solid rgba(255, 255, 255, 0.5); */
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(128, 208, 223);
+
+        }
+
+        label {
+            font-family: 'Cascadia Code', monospace; 
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #CCF5F1;
+        }
+
+        input[type="text"] {
+            font-family: 'Cascadia Code', monospace; 
+            width: 100%;
+            padding: 10px;
+            color: #CCF5F1;
+            border-color: #CCF5F1;
+            margin: 0 auto;
+            /* border: none; Remove input borders */
+            /* border-bottom: 2px solid rgba(255, 255, 255, 0.5); Add a semi-transparent bottom border */
+            border-radius: 5px;
+            background-color: transparent; /* Make input background transparent */
+        }
+
+        h4{
+            margin-top: 20px;
+            font-weight: bold;
+            color: #CCF5F1;
+        }
+        h3{
+            margin-top: 20px;
+            font-weight: bold;
+            color: #CCF5F1;
+        }
+        a{
+            color: #bcfafa;
+        }
+
+
+        input[type="submit"] {
+            background-color: transparent;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #CCF5F1;
+        }
+
+        p {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #CCF5F1;
+        }
+
+        .navbar {
+            background-color: transparent;
+            overflow: hidden;
+        }
+
+        .navbar a {
+            float: right;
+            display: block;
+            color: #CCF5F1;
+            text-align: center;
+            padding: 14px 16px;
+            animation: bubble 1s ease-in-out infinite;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            background-color: transparent;
+        }
+
+        /* Add this CSS animation definition */
+    @keyframes bubble {
+        0% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+        100% {
+            transform: translateY(0);
+        }
+    }
+
+    /* Apply the animation to the <p> element */
+    p {
+        margin-top: 20px;
+        font-weight: bold;
+        color: #CCF5F1;
+        animation: bubble 1s ease-in-out infinite; /* Apply the 'bubble' animation */
+    }
+
+    .custom-input::placeholder {
+        color: #bcfafa; /* Change this to the color you desire */
+    }
+
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="{% url 'logout' %}" style="float: right;">Log Out</a>
+        <a href="{% url 'list_website' %}" style="float: right;">Phishing Websites List</a>
+        
+    </div>
+
+    <h1>Phishing Website Detection</h1>
+    <!-- <div class="form-container"> -->
+        <form method="post">
+            {% csrf_token %}
+            <!-- <label for="url">Enter URL:</label> -->
+            <input type="text" class=".custom-input" name="url"  placeholder="https://www.example.com"  required>
+            <br>
+            <input type="submit" value="Check">
+        </form>
+    <!-- </div> -->
+
+    {% if checked_website %}
+    <p>Checked Website: {{ checked_website }}</p>
+    {% endif %}
+
+    {% if result %}
+        <h4>Result: {{ result }}</h4>
+    {% endif %}
+
+
+    <h3>Worried about SQL injection on websites? <a href="{% url 'sql_injection' %}" >Click here to investigate.</a></h3>
+</body>
+</html>

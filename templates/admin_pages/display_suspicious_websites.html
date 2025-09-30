@@ -1,0 +1,111 @@
+{% extends "admin_pages/base.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+/* Responsive CSS styles for the table */
+.table-responsive {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+  border: 1px solid black; /* Ensure all cells have borders */
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+img {
+  width: 80px;
+  height: 80px;
+}
+</style>
+
+<div class="col-lg-10 grid-margin stretch-card">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Suspicious Website</h4>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+                <th>Website Url</th>
+                {% comment %} <th>Event Details</th> {% endcomment %}
+                
+                <th>Created At</th>
+                <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for website in websites %}
+            <tr>
+              <td>{{ forloop.counter }} - {{ website.url }}</td>
+              {% comment %} <td>{{ event.event_details|safe }}</td> {% endcomment %}
+              <td>{{ website.created_at }}</td>
+              
+              <td>
+                
+                <a href="" class="btn btn-danger btn-sm">
+                  <i class="mdi mdi-delete" aria-hidden="true"></i> Delete
+                </a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .event-description {
+    max-width: 500px; /* Adjust the width as needed */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  @media (max-width: 575.98px) {
+    .event-description {
+      max-width: 150px; /* Smaller width for smaller screens */
+    }
+  }
+</style>
+
+<style>
+  table {
+      width: 100%;
+      border-collapse: collapse;
+  }
+  table, th, td {
+      border: 1px solid black;
+  }
+  th, td {
+      padding: 8px;
+      text-align: left;
+  }
+  .table-responsive {
+      overflow-x: auto;
+  }
+
+  @media (max-width: 575.98px) {
+      .table-responsive {
+          overflow-x: auto;
+      }
+      .card-body td:nth-child(2) {
+          max-width: 150px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+      }
+  }
+</style>
+{% endblock %}
